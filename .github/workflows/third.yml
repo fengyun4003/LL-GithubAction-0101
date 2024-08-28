@@ -1,0 +1,35 @@
+name: second
+
+on: push
+
+jobs: 
+    job1:
+        name: First Job
+        runs-on: ubuntu-latest
+        steps:
+          - name: Step one
+            uses: actions/checkout@v2
+          - name: Step two
+            run: date
+    job2: 
+        name: Second Job
+        runs-on: windows-latest
+        steps:
+          - name: Step one
+            uses: actions/checkout@v2
+          - name: Step two
+            run: date
+    job3:
+        name: Third Job
+        runs-on: macos-latest
+        steps:
+          - name: Step 1
+            uses: action/checkout@v2
+          - name: Step 2
+            run: date
+    job4: 
+        needs: [job1, job2, job3]
+        name: Fourth Job
+        runs-on: ubuntu-latest
+        steps:
+          - run: date
